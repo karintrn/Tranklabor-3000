@@ -1,0 +1,21 @@
+.card-field{
+    border: 1px solid black;
+}
+
+.middle-section{
+    display: flex;
+}
+
+.draw-pile{
+    margin-left: 50px;
+}
+
+img{
+    width: 150px;
+    height: auto;
+}
+
+h1{
+    font-size: 24px;
+    color: rgb(182, 27, 184);
+}
