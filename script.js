@@ -19,6 +19,7 @@ function renderHand(container, hand) {
   });
 }
 
+// prepare game
 function initialDeal() {
   player1 = [];
   player2 = [];
@@ -59,7 +60,7 @@ function refillHandsAndMiddle() {
 }
 
 function calculatePotion(cards) {
-  // Werte und Farben bestimmen
+  // values and colors
   const valueOf = (c) => {
     if (c.startsWith("ace")) return 1;
     if (c.startsWith("jack")) return 0;
@@ -73,17 +74,16 @@ function calculatePotion(cards) {
   const suits = cards.map(suitOf);
   const sum = values.reduce((a, b) => a + b, 0);
 
-  // Hilfsfunktionen
   const has = (rank) => cards.some(c => c.startsWith(rank));
   const allEqual = values.every(v => v === values[0]);
   const allSameSuit = suits.every(s => s === suits[0]);
 
-  // Grundwerte
+  // some values....
   let points = sum;
   let type = "Normaler Trank";
   let exploded = false;
 
-  // Spezielle Tränke
+  // special potions
   if (allEqual) {
     type = "Dreifachtrank";
     points = 10;
@@ -264,8 +264,8 @@ brewBtn.addEventListener("click", () => {
     player2 = player2.filter(c => !selectedCards.includes(c));
   }
 
-  // Mitte aktualisieren
-  middle = middle.filter(c => !selectedCards.includes(c)); // ✅ hinzugefügt
+  // update middle
+  middle = middle.filter(c => !selectedCards.includes(c));
 
   selectedCards = [];
   brewBtn.disabled = true;
@@ -276,7 +276,7 @@ brewBtn.addEventListener("click", () => {
   needsRefill = true;
 });
 
-// Start
+// Start gane
 initialDeal();
 resultEl.textContent = "Spieler 1 ist dran!";
 updateHUD();
